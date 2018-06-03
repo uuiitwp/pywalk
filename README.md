@@ -1,5 +1,5 @@
 # pywalk
-pywalk是提供了一个纯Python的walkgis中wkb读写的功能，是一个比较好的gis数据结构入门的例子
+pywalk提供了一个纯Python的walkgis中wkb读写的功能，是一个比较好的gis数据结构入门的例子
 
 由于walkgis中的几何数据存储形式并不是标准的wkb数据格式，但是比较类似
 
