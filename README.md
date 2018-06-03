@@ -9,15 +9,22 @@ walkgis点的格式如下：
 
 struct point
 {
+
   double X;
+  
   double Y;
+  
   double Z;
+  
 }
 
 struct walkpoint
 {
+
   uint geometrytype = 1
+  
   point pt;
+  
 }
 
 二进制形式为：
@@ -27,21 +34,32 @@ walkgis线的格式如下：
 
 struct segment
 {
+
   uint pointnum;
+  
   point[pointnum] pts;
+  
 }
+
 
 struct polyline
 {
+
   uint segmentnum;
+  
   segment[segmentnum] sgms;
+  
 }
 
 struct walkpolyline
 {
+
   uint geometrytype = 2;
+  
   uint polylinenum;
+  
   polyline[polylinenum] pls;
+  
 }
 
 二进制形式为：
@@ -52,16 +70,23 @@ walkgis面的格式如下：
 
 struct polygon
 {
+
   uint polylinenum;
+  
   polyline[polylinenum] pls;
+  
 }
 
 
 struct walkpolygon
 {
+
   uint polygonnum;
+  
   polygon[polygonnum] plgs;
+  
 }
 
 二进制形式为：
+
 03000000010000000100000001000000030000004260e5d0b6c5f340f2d24d62e6c3f24000000000000000000e2db29db7c5f340fed478e91ac4f24000000000000000002db29defc1c5f340508d976e4ec4f2400000000000000000
