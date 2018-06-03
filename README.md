@@ -7,13 +7,15 @@ pywalk提供了一个纯Python的walkgis中wkb读写的功能，是一个比较�
 
 walkgis点的格式如下：
 
-struct point{
+struct point
+{
   double X;
   double Y;
   double Z;
 }
 
-struct walkpoint{
+struct walkpoint
+{
   uint geometrytype = 1
   point pt;
 }
@@ -23,18 +25,21 @@ struct walkpoint{
 
 walkgis线的格式如下：
 
-struct segment{
+struct segment
+{
   uint pointnum;
   point[pointnum] pts;
 }
 
-struct polyline{
+struct polyline
+{
   uint segmentnum;
   segment[segmentnum] sgms;
 }
 
-struct walkpolyline{
-  uint geometrytype = 2
+struct walkpolyline
+{
+  uint geometrytype = 2;
   uint polylinenum;
   polyline[polylinenum] pls;
 }
@@ -45,13 +50,15 @@ struct walkpolyline{
 
 walkgis面的格式如下：
 
-struct polygon{
+struct polygon
+{
   uint polylinenum;
   polyline[polylinenum] pls;
 }
 
 
-struct walkpolygon{
+struct walkpolygon
+{
   uint polygonnum;
   polygon[polygonnum] plgs;
 }
