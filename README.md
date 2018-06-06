@@ -21,7 +21,7 @@ struct point
 struct walkpoint
 {
 
-  uint geometrytype = 1
+  uint geometrytype = 1;
   
   point pt;
   
@@ -81,7 +81,7 @@ struct polygon
 struct walkpolygon
 {
 
-  uint polygonnum;
+  uint polygonnum = 3;
   
   polygon[polygonnum] plgs;
   
