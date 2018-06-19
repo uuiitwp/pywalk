@@ -94,6 +94,8 @@ class polylineZ:
             self.length += segZ.length
     def tobinary(self):
         return int2bin(self.SegmentZnum)+b''.join([segZ.tobinary() for segZ in self.listSegmentZs])
+    def towalkWKB(self):
+        return bytearray(bytearray.fromhex('07000000')+self.tobinary())
     def __repr__(self):
         return 'polylineZ('+','.join([segZ.__repr__() for segZ in self.listSegmentZs])+')'
     
@@ -224,7 +226,9 @@ def FromWalkWKB(binary):
             return polygonZ1(binary[4:])
         if binary[0:4] == bytearray.fromhex('06000000'):
             return multipolygon(binary[4:])
-        if binary[0:14] == bytearray.fromhex('0300060000000000000000000000'):
+        if binary[0:4] == bytearray.fromhex('07000000'):
+            return polylineZ(binary[4:])
+        if binary[0:13] == bytearray.fromhex('03000600000000000000000000'):
             return location(binary)
     except ValueError:
         raise Exception('this binary cannot initialize as a WKB')

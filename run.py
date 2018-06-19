@@ -36,7 +36,7 @@ def run(dirpath):
                                 cursor.execute("update {1} set Geometry = ? where FeatureID = {0}".format(str(FeatureID),tablename), geo.towalkWKB())
                                 conn.commit()
                             except:
-                                print('table {0} ,FeatureID {1} failed ,binary :{2}'.format(tablename, FeatureID, binascii.b2a_hex(bytes(wkb))))
+                                print('dbpath {3}, table {0} ,FeatureID {1} failed ,binary :{2}'.format(tablename, FeatureID, binascii.b2a_hex(bytes(wkb)),fc))
                     if tablename[-11:] == 'Annotations':
                         SQL = "select Location,AnnotationID,Annotation from {0}".format(tablename)
                         rows = cursor.execute(SQL)
@@ -48,10 +48,10 @@ def run(dirpath):
                                 cursor.execute("update {1} set Location = ? where AnnotationID = {0}".format(str(FeatureID),tablename), geo.towalkWKB())
                                 conn.commit()
                             except:
-                                print('table {0} ,AnnotationID {1} failed ,binary :{2},{3}'.format(tablename, FeatureID, binascii.b2a_hex(bytes(wkb)), str(row[2])))
+                                print('dbpath {3},table {0} ,AnnotationID {1} failed ,binary :{2},{3}'.format(tablename, FeatureID, binascii.b2a_hex(bytes(wkb)), str(row[2]),fc))
                 cursor.close()
                 conn.close()
 
 
 if __name__ == '__main__':
-    run(r'C:\Users\uuiit\Desktop\新建文件夹')
+    run(r'E:\坐标转换\杭州\walk')
