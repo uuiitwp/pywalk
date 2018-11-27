@@ -1,8 +1,6 @@
 #coding:utf-8
 import struct
 
-__author = '浙测一院-杨子健'
-__tel = '15651785611'
 
 def main():
     import pyodbc
